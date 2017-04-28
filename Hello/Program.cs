@@ -11,7 +11,7 @@ namespace Hello
         static void Main(string[] args)
         {
             Console.WriteLine("Hello, World!");
-            Console.WriteLine("Today is " + DateTime.Today.DayOfWeek + " the " + DateTime.Today.Day + "th of " + DateTime.Now.ToString("MMMM"));
+            Console.WriteLine("Today is " + DateTime.Today.DayOfWeek + " the " + DateTime.Today.Day + " of " + DateTime.Now.ToString("MMMM"));
         }
     }
 }
