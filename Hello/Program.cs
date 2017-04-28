@@ -30,7 +30,7 @@ namespace Hello
                 }
             }
             Console.WriteLine("Hello, " + user + "!");
-            Console.WriteLine("Today is " + DateTime.Today.DayOfWeek + " the " + DateTime.Today.Day + GetDaySuffix(DateTime.Today.Day) + " of " + DateTime.Now.ToString("MMMM"));
+            Console.WriteLine("Today is " + DateTime.Now.DayOfWeek + " the " + DateTime.Now.Day + GetDaySuffix(DateTime.Now.Day) + " of " + DateTime.Now.ToString("MMMM"));
             Console.Write("Press any key to exit... ");
             Console.ReadKey();
             Environment.Exit(0);
