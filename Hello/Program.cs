@@ -1,4 +1,5 @@
-﻿using System;
+﻿//This is a play area as I learn to write in C#
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
