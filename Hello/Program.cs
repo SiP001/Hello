@@ -9,7 +9,7 @@ namespace Hello
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
             string GetDaySuffix(int day)
             {
@@ -30,12 +30,12 @@ namespace Hello
                 }
             }
             Console.Title = "Hello, World!";
-            
             Console.WriteLine("Hello, " + Environment.UserName + "!");
             Console.WriteLine("Today is " + DateTime.Now.DayOfWeek + " the " + DateTime.Now.Day + GetDaySuffix(DateTime.Now.Day) + " of " + DateTime.Now.ToString("MMMM") + " " + DateTime.Now.Year);
             Console.Write("Press any key to exit... ");
             Console.ReadKey();
             Environment.Exit(0);
+
         }
     }
 }
