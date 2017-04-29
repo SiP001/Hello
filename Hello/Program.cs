@@ -11,7 +11,6 @@ namespace Hello
     {
         static void Main(string[] args)
         {
-            string user = Environment.UserName;
             string GetDaySuffix(int day)
             {
                 switch (day)
@@ -30,8 +29,10 @@ namespace Hello
                         return "th";
                 }
             }
-            Console.WriteLine("Hello, " + user + "!");
-            Console.WriteLine("Today is " + DateTime.Now.DayOfWeek + " the " + DateTime.Now.Day + GetDaySuffix(DateTime.Now.Day) + " of " + DateTime.Now.ToString("MMMM"));
+            Console.Title = "Hello, World!";
+            
+            Console.WriteLine("Hello, " + Environment.UserName + "!");
+            Console.WriteLine("Today is " + DateTime.Now.DayOfWeek + " the " + DateTime.Now.Day + GetDaySuffix(DateTime.Now.Day) + " of " + DateTime.Now.ToString("MMMM") + " " + DateTime.Now.Year);
             Console.Write("Press any key to exit... ");
             Console.ReadKey();
             Environment.Exit(0);
