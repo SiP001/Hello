@@ -1,10 +1,6 @@
 ﻿//This is a play area as I learn to write in C#
 //Dev Branch
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Hello
 {
