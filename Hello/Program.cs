@@ -8,6 +8,7 @@ namespace Hello
     {
         static void AgeCalc()
         {
+            Console.Clear();
             Console.Write("Enter DoB (dd/mm/yyyy): ");
             string babyBorn = Console.ReadLine();
             DateTime babyDoB = DateTime.ParseExact(babyBorn, "d/M/yyyy", CultureInfo.InvariantCulture);
@@ -91,12 +92,13 @@ namespace Hello
         }   
         static void Main()
         {
-            Console.Title = "Hello, World!";
-            Console.WriteLine(GetGreating(DateTime.Now.Hour) + ", " + Environment.UserName + "!");
-            Console.WriteLine("Today is " + DateTime.Now.DayOfWeek + " the " + DateTime.Now.Day + GetDaySuffix(DateTime.Now.Day) + " of " + DateTime.Now.ToString("MMMM") + " " + DateTime.Now.Year);
             while (true)
-            {
+            { 
+                Console.Title = "Hello, World!";
+                Console.WriteLine(GetGreating(DateTime.Now.Hour) + ", " + Environment.UserName + "!");
+                Console.WriteLine("Today is " + DateTime.Now.DayOfWeek + " the " + DateTime.Now.Day + GetDaySuffix(DateTime.Now.Day) + " of " + DateTime.Now.ToString("MMMM") + " " + DateTime.Now.Year);
                 OptionMenu();
+                Console.Clear();
             }
         }
     }
