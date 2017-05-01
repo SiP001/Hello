@@ -4,7 +4,7 @@ using System;
 using System.Globalization;
 namespace Hello
 {
-    class Program
+    class SiPsToolkit
     {
         static void AgeCalc()
         {
@@ -21,7 +21,7 @@ namespace Hello
             Console.WriteLine("             " + timeSince.Days / 7 + " weeks old.");
             Console.WriteLine("             " + timeSince.Days + " days old.");
             Console.WriteLine("             " + (int)timeSince.TotalHours + " hours old.");
-            Console.WriteLine("             " + (int)timeSince.TotalMinutes + " minutes old.");
+            Console.WriteLine("             " + (int)timeSince.TotalMinutes + " minutes old.");          
             Console.Write("Would you like to do another?(Yes/No): ");
             string loop = Console.ReadLine();
             if ( loop.ToLower() == "yes")
@@ -90,15 +90,19 @@ namespace Hello
                     break;
             }
         }   
+        static void Welcome()
+        {
+            Console.Title = "Hello, World!";
+            Console.WriteLine(GetGreating(DateTime.Now.Hour) + ", " + Environment.UserName + "!");
+            Console.WriteLine("Today is " + DateTime.Now.DayOfWeek + " the " + DateTime.Now.Day + GetDaySuffix(DateTime.Now.Day) + " of " + DateTime.Now.ToString("MMMM") + " " + DateTime.Now.Year);
+        }
         static void Main()
         {
             while (true)
-            { 
-                Console.Title = "Hello, World!";
-                Console.WriteLine(GetGreating(DateTime.Now.Hour) + ", " + Environment.UserName + "!");
-                Console.WriteLine("Today is " + DateTime.Now.DayOfWeek + " the " + DateTime.Now.Day + GetDaySuffix(DateTime.Now.Day) + " of " + DateTime.Now.ToString("MMMM") + " " + DateTime.Now.Year);
+            {
+                Welcome();
                 OptionMenu();
-                Console.Clear();
+                Console.Clear();             
             }
         }
     }
