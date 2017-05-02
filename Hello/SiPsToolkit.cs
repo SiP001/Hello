@@ -1,11 +1,27 @@
 ﻿//This is a play area as I learn to write in C#
-
-using System;
-using System.Globalization;
 namespace Hello
 {
-    class SiPsToolkit
+    using System;
+    using System.Globalization;
+    using System.IO;
+    using System.Text;
+    class Toolkit
     {
+        static void ReadFile()
+        {
+            Console.Clear();
+            Console.WriteLine("Please give me a path to a txt file!");
+            string location = @Console.ReadLine();
+            string fileStream = File.ReadAllText(location);
+            Console.Write(fileStream);
+            Console.WriteLine();
+            Console.Write("Would you like to do another?(Yes/No): ");
+            string loop = Console.ReadLine();
+            if (loop.ToLower() == "yes")
+            {
+                ReadFile();
+            }
+        }
         static void AgeCalc()
         {
             Console.Clear();
@@ -70,7 +86,7 @@ namespace Hello
         {
             Console.WriteLine("Select an Option: ");
             Console.WriteLine("[1]Age calculator.");
-            Console.WriteLine("[2]TBC");
+            Console.WriteLine("[2]Read File");
             Console.WriteLine("[3]TBC");
             Console.WriteLine("[4]Exit");
             int option = Convert.ToInt32(Console.ReadLine());
@@ -80,6 +96,7 @@ namespace Hello
                     AgeCalc();
                     break;
                 case 2:
+                    ReadFile();
                     break;
                 case 3:
                     break;
@@ -102,7 +119,7 @@ namespace Hello
             {
                 Welcome();
                 OptionMenu();
-                Console.Clear();             
+                Console.Clear();               
             }
         }
     }
