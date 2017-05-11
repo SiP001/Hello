@@ -2,19 +2,70 @@
 namespace Hello
 {
     using System;
+    using System.Linq;
+    using System.Collections.Generic;
     using System.Globalization;
     using System.IO;
     using System.Text;
     class Toolkit
     {
+        static void ReadIt(string args)
+        {
+            if (args.Length == 0)
+                throw new ArgumentNullException("File Name", "you must supply a file name as an argument");
+
+            string fileName = args;
+
+        Start:
+
+            try
+            {
+                using (StreamReader reader = new StreamReader(new FileStream(fileName, FileMode.Open, FileAccess.Read, FileShare.ReadWrite)))
+                {
+                    //start at the end of the file
+                    long lastMaxOffset = reader.BaseStream.Length;
+
+                    while (true) //needs an escape
+                    {
+                        System.Threading.Thread.Sleep(100);
+
+                        //if the file size has not changed, idle
+                        if (reader.BaseStream.Length == lastMaxOffset)
+                            continue;
+
+                        //seek to the last max offset
+                        reader.BaseStream.Seek(lastMaxOffset, SeekOrigin.Begin);
+
+                        //read out of the file until the EOF
+                        string line = "";
+                        while ((line = reader.ReadLine()) != null)
+                            Console.WriteLine(line);
+
+                        //update the last max offset
+                        lastMaxOffset = reader.BaseStream.Position;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+
+                //prompt user to restart
+                Console.Write("Would you like to try re-opening the file? Y/N:");
+                if (Console.ReadLine().ToUpper() == "Y")
+                    goto Start;
+            }
+
+        }
+
         static void ReadFile()
         {
             Console.Clear();
             Console.WriteLine("Please give me a path to a txt file!");
             string location = @Console.ReadLine();
-            string fileStream = File.ReadAllText(location);
-            Console.Write(fileStream);
-            Console.WriteLine();
+            //need to add a section to print the last few lines
+            ReadIt(location);
+
             Console.Write("Would you like to do another?(Yes/No): ");
             string loop = Console.ReadLine();
             if (loop.ToLower() == "yes")
@@ -32,12 +83,12 @@ namespace Hello
             int yearsSince = (DateTime.Now.Year - babyDoB.Year);
             int monthsSince = ((yearsSince * 12) + (DateTime.Now.Month - babyDoB.Month));
             Console.WriteLine("Your Age is:");
-            Console.WriteLine("             " + yearsSince + " years old.");
-            Console.WriteLine("             " + monthsSince + " months old.");
-            Console.WriteLine("             " + timeSince.Days / 7 + " weeks old.");
-            Console.WriteLine("             " + timeSince.Days + " days old.");
-            Console.WriteLine("             " + (int)timeSince.TotalHours + " hours old.");
-            Console.WriteLine("             " + (int)timeSince.TotalMinutes + " minutes old.");          
+            Console.WriteLine($"             {yearsSince} years old.");
+            Console.WriteLine($"             {monthsSince} months old.");
+            Console.WriteLine($"             {timeSince.Days / 7} weeks old.");
+            Console.WriteLine($"             {timeSince.Days} days old.");
+            Console.WriteLine($"             {(int)timeSince.TotalHours} hours old.");
+            Console.WriteLine($"             {(int)timeSince.TotalMinutes} minutes old.");          
             Console.Write("Would you like to do another?(Yes/No): ");
             string loop = Console.ReadLine();
             if ( loop.ToLower() == "yes")
