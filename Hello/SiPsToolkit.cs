@@ -60,6 +60,7 @@ namespace Hello
 
         static void ReadFile()
         {
+            Start:
             Console.Clear();
             Console.WriteLine("Please give me a path to a txt file!");
             string location = @Console.ReadLine();
@@ -69,12 +70,11 @@ namespace Hello
             Console.Write("Would you like to do another?(Yes/No): ");
             string loop = Console.ReadLine();
             if (loop.ToLower() == "yes")
-            {
-                ReadFile();
-            }
+                goto Start;
         }
         static void AgeCalc()
         {
+            Start:
             Console.Clear();
             Console.Write("Enter DoB (dd/mm/yyyy): ");
             string babyBorn = Console.ReadLine();
@@ -91,10 +91,8 @@ namespace Hello
             Console.WriteLine($"             {(int)timeSince.TotalMinutes} minutes old.");          
             Console.Write("Would you like to do another?(Yes/No): ");
             string loop = Console.ReadLine();
-            if ( loop.ToLower() == "yes")
-            {
-                AgeCalc();
-            }
+            if (loop.ToLower() == "yes")
+                goto Start;
         }
         static string GetDaySuffix(int day)
         {
