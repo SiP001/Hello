@@ -6,7 +6,7 @@ namespace Hello
     {         
         static void Main()
         {
-            Welcome wm = new Welcome();
+            Menu wm = new Menu();
             while (true)
             {
                 wm.WelcomeMessage();

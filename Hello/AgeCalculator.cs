@@ -9,8 +9,13 @@
             Start:
             Console.Clear();
             NoClear:
-            Console.Write("Enter DoB (dd/mm/yyyy): ");
+            Console.Write("Enter DoB (dd/mm/yyyy) or \"Exit\": ");
             string babyBorn = Console.ReadLine();
+            string loop = "";
+            if (babyBorn.ToLower() == "exit")
+            {
+                goto End;
+            }
             DateTime babyDoB;
             if (checkDoB(babyBorn))
             {
@@ -33,9 +38,10 @@
             Console.WriteLine($"             {(int)timeSince.TotalHours} hours old.");
             Console.WriteLine($"             {(int)timeSince.TotalMinutes} minutes old.");
             Console.Write("Would you like to do another?(Yes/No): ");
-            string loop = Console.ReadLine();
+            loop = Console.ReadLine();
+            End:
             if (loop.ToLower() == "yes")
-                goto Start;
+                goto Start;   
         }
         private bool checkDoB(string born)
         {

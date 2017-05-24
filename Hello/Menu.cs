@@ -1,7 +1,7 @@
 ﻿namespace Hello
 {
     using System;
-    class Welcome
+    class Menu
     {
         public void WelcomeMessage()
         {
