@@ -9,8 +9,10 @@ namespace Hello
             Welcome wm = new Welcome();
             while (true)
             {
+                Console.Title = "Hello, World!";
+                Console.Clear();
                 wm.WelcomeMessage();
-                Console.Clear();               
+                wm.OptionMenu();
             }
         }
     }
